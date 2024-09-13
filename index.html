@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Solar Water Heater</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+    <div class="h-screen">
+        <div class="max-w-screen-sm h-screen bg-gray-100/50 mx-auto py-5 space-y-14">
+            <div class="w-full my-10">
+                <div class="rounded-full w-full max-w-[250px] p-1 mx-auto border text-center text-sm" id="datetime">
+                    Friday, 12th September. 12:45:34 PM
+                </div>
+            </div>
+
+            <div
+                class="w-[250px] h-[250px] before:w-[250px] before:h-[250px] before:absolute before:bg-transparent before:outline-double before:outline-8 before:outline-orange-200 before:outline-offset-4 before:border-8 before:border-double before:border-orange-300 mx-auto before:rounded-full flex items-center justify-center before:animate-pulse after:animate-pulse after:w-[250px] after:h-[250px] after:absolute after:rounded-full after:outline-double after:outline-8 after:outline-orange-100 after:outline-offset-[16px]">
+                <div class="text-center animate-none">
+                    <p class="text-xs text-gray-500 mb-2">
+                        <i data-feather="droplet" class="mx-auto mb-1"></i>
+                        Water temperature
+                    </p>
+                    <p class="text-5xl font-bold mb-5">
+                        <span id="waterTemp"></span><sup>o</sup>c
+                    </p>
+                </div>
+            </div>
+
+            <div class="w-full my-14 mx-auto flex justify-center items-center">
+                <div class="stats stats-vertical md:stats-horizontal bg-transparent shadow mx-auto">
+                    <div class="stat">
+                        <div class="stat-figure text-warning">
+                            <i data-feather="sun"></i>
+                        </div>
+                        <div class="stat-title">
+                            Solar intensity
+                        </div>
+                        <div class="stat-value text-warning font-bold"><span id="solarIntensity"></span>W/m²</div>
+                        <div class="stat-desc">at the moment</div>
+                    </div>
+
+                    <div class="stat">
+                        <div class="stat-figure text-secondary">
+                            <i data-feather="thermometer"></i>
+                        </div>
+                        <div class="stat-title">Predicted</div>
+                        <div class="stat-value text-secondary font-bold"><span id="predictedTemp"></span><sup>o</sup>c
+                        </div>
+                        <div class="stat-desc">of water in next 1 hour</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="btm-nav w-full max-w-screen-sm fixed bottom-0 min-h-[10vh] bg-gray-200a mx-auto">
+            <button class="bg-gray-200/50 hover:bg-gray-200">
+                <i data-feather="thermometer"></i>
+                <span class="btm-nav-label">Home</span>
+            </button>
+            <button class="bg-gray-100 hover:bg-gray-200" onclick="activityModal.showModal()">
+                <i data-feather="activity"></i>
+                <span class="btm-nav-label">System</span>
+            </button>
+        </div>
+    </div>
+
+    <dialog id="activityModal" class="modal">
+        <div class="modal-box">
+            <div class="overflow-x-auto">
+                <table class="table table-zebra">
+                    <thead>
+                        <tr>
+                            <th>Component</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Connection Module</td>
+                            <td class="text-success"><i data-feather="check"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Absorber Plate</td>
+                            <td class="text-success"><i data-feather="check"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Temperature Sensor</td>
+                            <td class="text-success"><i data-feather="check"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Battery Health</td>
+                            <td class="text-success"><i data-feather="check"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Ambience Sensor</td>
+                            <td class="text-success"><i data-feather="check"></i></td>
+                        </tr>
+                        <tr>
+                            <td>Light Sensor</td>
+                            <td class="text-success"><i data-feather="check"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="modal-action">
+                <form method="dialog">
+                    <button class="btn">Close</button>
+                </form>
+            </div>
+        </div>
+    </dialog>
+
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script>
+        feather.replace();
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>
